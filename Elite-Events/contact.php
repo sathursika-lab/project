@@ -1,8 +1,7 @@
 <?php
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // 1. Database Connection
-    // Assuming db.php is in the same directory or adjust the path (e.g., '../db.php') if needed
+    
     require_once 'db.php'; }
 
 // -------------------- FORM HANDLING --------------------
