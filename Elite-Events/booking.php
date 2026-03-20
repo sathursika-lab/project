@@ -1,15 +1,14 @@
 <?php
-// --- PHP PROCESSING LOGIC --
+
 $message_sent = false;
 $error_msg = "";
 $first_name = "";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // 1. Database Connection
-    // Assuming db.php is in the same directory or adjust the path (e.g., '../db.php') if needed
+   
     require_once 'db.php'; 
 
-    // 2. Sanitize Input Data
+    
     $first_name   = htmlspecialchars($_POST['first_name'] ?? '');
     $last_name    = htmlspecialchars($_POST['last_name'] ?? '');
     $full_name    = trim($first_name . ' ' . $last_name);
@@ -21,12 +20,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $town         = htmlspecialchars($_POST['town'] ?? '');
     $district     = htmlspecialchars($_POST['district'] ?? '');
 
-    // 3. Handle Checkboxes (Arrays) and Select dropdowns
+    
     $event_types  = isset($_POST['event_types']) ? implode(", ", $_POST['event_types']) : "None";
     $services     = isset($_POST['services']) ? implode(", ", $_POST['services']) : "None";
     $package      = $_POST['package'] ?? "None selected";
 
-    // 4. Validate and Insert into Database
+    
     if (!empty($first_name) && !empty($phone) && !empty($event_date)) {
         $booking_ref = 'ELITE-' . strtoupper(substr(uniqid(), -5));
         
